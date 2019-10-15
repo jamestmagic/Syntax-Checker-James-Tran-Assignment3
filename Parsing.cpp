@@ -36,18 +36,10 @@ Parsing::~Parsing(){ //destructor
 void Parsing::readNewFile(string fileName){ //copies cource file code into newFile string
   ifstream readFile(fileName);
   string tempString;
-  try{
-    if(!readFile){ //checks if readfile exists
-      throw readFile;
-    }
-    while(getline(readFile, tempString)){ //iterate through
-      newFile += tempString;
-      newFile += "\n";
-      ++numLines;
-    }
-  }
-  catch(exception& e){ //throws expection in case of ioexception
-    cout << "Exception: Could not read or open file" << endl;
+  while(getline(readFile, tempString)){ //iterate through
+    newFile += tempString;
+    newFile += "\n";
+    ++numLines;
   }
 
 }

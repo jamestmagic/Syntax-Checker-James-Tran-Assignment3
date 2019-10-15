@@ -8,6 +8,7 @@ int main(int argc, char **argv){
   string fileName = argv[1];
   Parsing *p = new Parsing(); //new parsing object
   p->readNewFile(fileName);
+  p->printFile();
   p->errorChecking(); //runs error checking and iteration
   char answer = 'y';
   while(p->getCorrectSyntax() && answer == 'y'){ //asks if new

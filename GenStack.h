@@ -5,7 +5,7 @@ template <class T>
 class GenStack{
 public:
   GenStack();//constructor
-  GenStack(int maxSize);
+  GenStack(int maxSize); //destructor
   ~GenStack();
   void push(T);
   T pop();
@@ -23,14 +23,14 @@ public:
 };
 
 template <class T>
-GenStack<T>::GenStack(){
+GenStack<T>::GenStack(){ //constructor
   myArray = new T[0];
   size = 0;
   top = -1;
 }
 
 template <class T>
-GenStack<T>::GenStack(int maxSize){
+GenStack<T>::GenStack(int maxSize){ //destructor
   myArray = new T[maxSize];
   size = maxSize;
   top = -1;
@@ -43,14 +43,16 @@ GenStack<T>::~GenStack(){
 
 template <class T>
 void GenStack<T>::push(T d){
-  //need to check error/boundary check
-  //research this
+  try{
     myArray[++top] = d;
+  }
+  catch(...){
+    cout << "Stack is empty. Can not push." << endl;
+  }
 }
 
 template <class T>
 T GenStack<T>::pop(){
-  //make sure it's not empty
   try{
     return myArray[top--];
   }
@@ -61,9 +63,13 @@ T GenStack<T>::pop(){
 
 template <class T>
 T GenStack<T>::peek(){
-  //check if isEmpty
+  try{
+    return myArray[top];
+  }
+  catch(...){
+    cout << "Stack is empty. Can not pop." << endl;
+  }
 
-  return myArray[top];
 }
 
 template <class T>
