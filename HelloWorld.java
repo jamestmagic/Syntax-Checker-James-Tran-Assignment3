@@ -4,7 +4,7 @@
 
 import java.net.InetAddress;
 
-class HelloWorld {
+class HelloWorld{
     public static void main(String args[]){
     	System.out.println("Hello World!");
     	System.out.println("I'm a Java program running on a computer.");
@@ -15,6 +15,6 @@ class HelloWorld {
     		System.out.println("Host Name:- " + inetAddress.getHostName());
     	} catch(Exception e){
     		System.err.println("No details found!");
-    	}
+      }
     }
 }

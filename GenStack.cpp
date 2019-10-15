@@ -14,6 +14,7 @@ public:
   bool isFull();
   bool isEmpty();
   void increaseSize();
+  void setSize(int newSize);
 
   int size;
   int top;
@@ -44,18 +45,24 @@ template <class T>
 void GenStack<T>::push(T d){
   //need to check error/boundary check
   //research this
-  myArray[++top] = d;
+    myArray[++top] = d;
 }
 
 template <class T>
 T GenStack<T>::pop(){
   //make sure it's not empty
-  return myArray[top--];
+  try{
+    return myArray[top--];
+  }
+  catch(...){
+    cout << "Stack is empty. Can not pop." << endl;
+  }
 }
 
 template <class T>
 T GenStack<T>::peek(){
   //check if isEmpty
+
   return myArray[top];
 }
 
@@ -80,4 +87,9 @@ void GenStack<T>::increaseSize(){
   myArray = nextStack;
   delete[] temp;
   delete[] nextStack;
+}
+
+template <class T>
+void GenStack<T>::setSize(int newSize){
+  size = newSize;
 }
