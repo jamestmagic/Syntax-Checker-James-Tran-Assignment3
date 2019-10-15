@@ -5,21 +5,18 @@
 using namespace std;
 
 int main(int argc, char **argv){
-  //string location = argv[0];
   string fileName = argv[1];
-  Parsing *p = new Parsing();
+  Parsing *p = new Parsing(); //new parsing object
   p->readNewFile(fileName);
-  p->printFile();
-  p->errorChecking();
+  p->errorChecking(); //runs error checking and iteration
   char answer = 'y';
-  while(p->getCorrectSyntax() && answer == 'y'){
+  while(p->getCorrectSyntax() && answer == 'y'){ //asks if new
     cout << "Would you like to proccess another list?(y/n)" << endl;
     cin >> answer;
     if(towlower(answer) == 'y'){
       cout << "Please enter the name of your new file." << endl;
       cin >> fileName;
       p->readNewFile(fileName);
-      p->printFile();
       p->errorChecking();
     }
   }
